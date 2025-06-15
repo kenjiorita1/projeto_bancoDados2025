@@ -1,0 +1,133 @@
+.modal-content-custom {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-custom {
+    background-color: #d60303;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+    padding: 20px;
+}
+
+/* Ícones */
+.payment-icon::before {
+    content: "\f53a";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 16px;
+}
+
+.description-icon::before {
+    content: "\f15c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 16px;
+}
+
+/* Inputs com ícone */
+.payment-icon input,
+.description-icon input {
+    padding-left: 40px !important;
+}
+
+/* Estilos personalizados para o modal de vendas */
+.modal-content-custom {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header-custom {
+    background-color: #d60303;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+    padding: 20px;
+}
+
+.modal-header-custom .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.modal-header-custom .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+/* Estilos para os campos com ícones */
+.payment-icon::before {
+    content: "\f53a";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 16px;
+    z-index: 4;
+}
+
+.description-icon::before {
+    content: "\f15c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 16px;
+    z-index: 4;
+}
+
+/* Ajustes para os inputs com ícones */
+.payment-icon .form-control,
+.description-icon .form-control {
+    padding-left: 40px !important;
+}
+
+/* Estilo para o botão primário */
+.btn-primary {
+    background-color: #d60303;
+    border-color: #d60303;
+}
+
+.btn-primary:hover {
+    background-color: #b30000;
+    border-color: #b30000;
+}
+
+/* Ajustes para os selects flutuantes */
+.form-floating label {
+    color: #6c757d;
+    padding: 0.5rem 1rem;
+}
+
+.form-floating>.form-select {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+}
+
+/* Ajuste para ícones nos campos flutuantes */
+.form-floating>.payment-icon::before,
+.form-floating>.description-icon::before {
+    top: 2.3rem;
+}
