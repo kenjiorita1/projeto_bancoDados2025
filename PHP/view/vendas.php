@@ -1,7 +1,7 @@
 <?php
     require_once('../../conn/conn.php');
 
-    $sql = "SELECT * FROM veiculos WHERE status != 'vendido' ";
+    $sql = "SELECT * FROM veiculos WHERE status = 'disponivel'";
     $veiculos = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM clientes";
@@ -133,15 +133,7 @@
                 <span>Registrar Vendas</span>
             </a>
 
-            <div class="menu-title">Relatórios</div>
-           <a onclick="window.open('../utils/PDF/gerar_pdf');" target="_BLANK">
-                <i class="fas fa-chart-line"></i>
-                <span>Vendas</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-chart-pie"></i>
-                <span>Estoque</span>
-            </a>
+      
         </div>
     </div>
 
@@ -192,10 +184,10 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-floating">
-                                                    <select onChange="selecionaVeiculo(this)" class="form-select" id="veiculo" name="veiculo" required>
+                                                    <select onChange="getValorSugerido()" class="form-select" id="veiculo" name="veiculo" required>
                                                         <option value="" selected disabled>Selecione um veículo</option>
                                                         <?php foreach ($veiculos as $row) { ?>
-                                                        <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['modelo']) ?></option>
+                                                            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['modelo']) ?></option>
                                                         <?php } ?>
                                                     </select>
                                                     <label for="veiculo">Veículo</label>
@@ -223,9 +215,13 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-floating">
-                                                    <input type="number" step="0.01" class="form-control" id="valor_venda" name="valor_venda" required placeholder="0,00">
+                                                    <input type="text" class="form-control" id="valor_venda" name="valor_venda" required placeholder="0,00">
                                                     <label for="valor_venda">Valor da Venda (R$)</label>
                                                 </div>
+                                                <div style="display: flex; justify-content: center;">
+                                                     <p>Valor sugerido: </p><span id="valor_sugerido"></span>
+                                                </div>
+                                                
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-floating">
@@ -324,6 +320,26 @@
 
         function excluir(id) {
             window.location.href = `../delete/vendas.php?id=${id}`;
+        }
+
+       function getValorSugerido() {
+            var veiculo = $('#veiculo').val();
+            console.log("Veículo selecionado:", veiculo); 
+
+            if (!veiculo) return;
+
+            var url = "../get/veiculoValor.php?veiculo=" + veiculo;
+
+            $.getJSON(url, function(response) {
+                console.log("Resposta da API:", response);
+                if (response.preco_venda !== undefined) {
+                   $('#valor_sugerido').text(response.preco_venda);
+                } else {
+                    alert("Veículo não encontrado.");
+                }
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+                console.error("Erro AJAX:", textStatus, errorThrown);
+            });
         }
 
         function imprimirRelatorio(tipo) {

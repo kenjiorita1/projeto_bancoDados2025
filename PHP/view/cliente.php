@@ -61,25 +61,7 @@
                 <span>Registrar Vendas</span>
             </a>
 
-            <div class="menu-title">Relatórios</div>
-           <a onclick="window.open('../utils/PDF/gerar_pdf');" target="_BLANK">
-                <i class="fas fa-chart-line"></i>
-                <span>Vendas</span>
-            </a>
-            <a href="#">
-                <i class="fas fa-chart-pie"></i>
-                <span>Estoque</span>
-            </a>
-<!-- 
-            <div class="menu-title">Configurações</div>
-            <a href="#">
-                <i class="fas fa-cog"></i>
-                <span>Configurações</span>
-            </a> -->
-             <!-- <a href="#">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Sair</span>
-            </a> -->
+           
             </div>
         </div>
     
