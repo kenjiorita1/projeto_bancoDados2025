@@ -1,7 +1,7 @@
 <?php
     require_once('../../conn/conn.php');
 
-    $sql = "SELECT * FROM veiculos WHERE status = 'disponivel'"; 
+    $sql = "SELECT * FROM veiculos WHERE status != 'vendido'"; 
     $veiculos = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM clientes";
@@ -187,7 +187,7 @@
                                                     <select onChange="getValorSugerido()" class="form-select" id="veiculo" name="veiculo" required>
                                                         <option value="" selected disabled>Selecione um veículo</option>
                                                         <?php foreach ($veiculos as $row) { ?>
-                                                            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['modelo']) ?></option>
+                                                            <option value="<?= $row['id'] ?>"><?= htmlspecialchars($row['modelo'])?> - <?= htmlspecialchars($row['status'])?> </option>
                                                         <?php } ?>
                                                     </select>
                                                     <label for="veiculo">Veículo</label>

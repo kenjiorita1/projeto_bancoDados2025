@@ -6,6 +6,12 @@
     $linha = mysqli_fetch_assoc($resultVeiculos); 
     $qtdDisponivel  = $linha['TOTAL'];
 
+    $sql = " SELECT COUNT(*) AS total_vendas FROM vendas 
+    WHERE data_venda BETWEEN DATE_FORMAT(CURDATE(), '%Y-%m-01') AND LAST_DAY(CURDATE())";
+    $resultVendasMes= mysqli_query($conn, $sql);
+    $linha = mysqli_fetch_assoc($resultVendasMes); 
+    $qtdVendas = $linha['total_vendas'];
+
     $sql = "SELECT COUNT(*) AS TOTALCLIENTES FROM clientes";
     $resultClientes = mysqli_query($conn, $sql);
     $cliente = mysqli_fetch_assoc($resultClientes); 
