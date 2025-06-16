@@ -1,16 +1,26 @@
 <?php
     require_once ('./conn/conn.php');
+
     $sql = "SELECT COUNT(*) AS TOTAL FROM veiculos where status = 'disponivel'";
     $resultVeiculos = mysqli_query($conn, $sql);
-    
     $linha = mysqli_fetch_assoc($resultVeiculos); 
     $qtdDisponivel  = $linha['TOTAL'];
 
     $sql = "SELECT COUNT(*) AS TOTALCLIENTES FROM clientes";
     $resultClientes = mysqli_query($conn, $sql);
-
     $cliente = mysqli_fetch_assoc($resultClientes); 
     $qtdCliente  = $cliente['TOTALCLIENTES'];
+
+    $sql = " SELECT COUNT(*) AS total_vendas FROM vendas 
+    WHERE data_venda BETWEEN DATE_FORMAT(CURDATE(), '%Y-%m-01') AND LAST_DAY(CURDATE())";
+    $resultVendasMes= mysqli_query($conn, $sql);
+    $linha = mysqli_fetch_assoc($resultVendasMes); 
+    $qtdVendas = $linha['total_vendas'];
+
+    $sql = "SELECT SUM(valor_venda) AS faturamento FROM vendas ";
+    $resultFaturamento = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($resultFaturamento);
+    $faturamento  = $row['faturamento'] ?? 0; 
 
     $sql = "SELECT 
         v.id as id,
@@ -23,25 +33,6 @@
         FROM vendas v 
         INNER JOIN veiculos ve ON ve.id = v.id_veiculo "; 
     $resultVendas = mysqli_query($conn, $sql);
-
-   $sql = "SELECT 
-        SUM(valor_venda) AS faturamento
-        FROM vendas ";
-
-    $resultFaturamento = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($resultFaturamento);
-    $faturamento  = $row['faturamento'] ?? 0;
-
-
-     $sql = " SELECT COUNT(*) AS total_vendas 
-        FROM vendas 
-        WHERE data_venda BETWEEN DATE_FORMAT(CURDATE(), '%Y-%m-01') 
-                    AND LAST_DAY(CURDATE())";
-    $resultVendasMes= mysqli_query($conn, $sql);
-    
-    $linha = mysqli_fetch_assoc($resultVendasMes); 
-    $qtdVendas = $linha['total_vendas'];
-
 ?>
 
 
@@ -97,20 +88,7 @@
         </div>
     </div> 
 
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Top Bar -->
-        <!-- <div class="top-bar">
-            <div class="toggle-sidebar">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="user-menu d-flex align-items-center">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuário">
-                <span>Administrador</span>
-            </div>
-        </div> -->
-        
-        <!-- Dashboard Content -->
         <h2 class="mb-4">Dashboard</h2>
         
         <div class="row">
@@ -155,7 +133,6 @@
             </div>
         </div>
         
-        <!-- Vehicles Section -->
         <div class="dashboard-card mt-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h4>Veículos Recentes</h4>
@@ -194,17 +171,13 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- JavaScript Personalizado -->
+
     <script>
-        // Toggle Sidebar
         document.querySelector('.toggle-sidebar').addEventListener('click', function() {
             document.querySelector('.sidebar').classList.toggle('active');
         });
         
-        // Animação do contador
         function animateValue(id, start, end, duration) {
             var obj = document.getElementById(id);
             var range = end - start;
@@ -231,7 +204,6 @@
             run();
         }
         
-        // Iniciar contadores quando a página carregar
         window.addEventListener('load', function() {
             animateValue("vehicle-count", 0, 42, 2000);
         });

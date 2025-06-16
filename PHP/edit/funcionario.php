@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-    <!-- Optional theme -->
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 </head>
 
@@ -177,7 +177,7 @@
         window.location.href = `../delete/funcionario.php?id=${id}`;
     }
 
-     // Máscara para telefone
+    
         document.getElementById('telefone').addEventListener('input', function(e) {
             let value = this.value.replace(/\D/g, '');
             if (value.length > 11) value = value.substring(0, 11);
@@ -192,7 +192,7 @@
             this.value = value;
         });
         
-        // Máscara para CEP
+       
         document.getElementById('cep').addEventListener('input', function(e) {
             let value = this.value.replace(/\D/g, '');
             if (value.length > 8) value = value.substring(0, 8);
@@ -204,7 +204,7 @@
             this.value = value;
         });
         
-        // Máscara para CPF
+        
         document.getElementById('cpf').addEventListener('input', function(e) {
             let value = this.value.replace(/\D/g, '');
             if (value.length > 11) value = value.substring(0, 11);

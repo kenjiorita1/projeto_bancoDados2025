@@ -1,9 +1,9 @@
 <?php
     require_once('../../conn/conn.php');
 
-    $sql = "SELECT * FROM forma_de_pagamento ";
+    $sql = "SELECT * FROM forma_de_pagamento";
 
-    echo $sql ;
+    echo $sql;
     $resultFormaPagamentos = mysqli_query($conn, $sql);
 
 ?>
@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CADASTRO DE FORMA DE PAGAMENTO</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../css/modal.css"> <!-- CSS novo (prioridade) -->
+    <link rel="stylesheet" href="../css/modal.css"> 
        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

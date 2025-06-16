@@ -32,4 +32,5 @@
 
         header('Location: ../view/cliente.php');
     }
+    mysqli_close($conn);
 ?>

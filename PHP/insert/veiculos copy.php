@@ -30,4 +30,5 @@
 
         header('Location: ../view/veiculos.php');
     }
+    mysqli_close($conn);
 ?>

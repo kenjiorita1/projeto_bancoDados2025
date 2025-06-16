@@ -117,7 +117,7 @@
 </body>
 
 <script>
-    // Máscara para valores monetários
+   
         document.querySelectorAll('.price-inputs input').forEach(input => {
             input.addEventListener('input', function(e) {
                 let value = this.value.replace(/[^\d.]/g, '');
@@ -135,12 +135,12 @@
             });
         });
         
-        // Atualiza o badge de status quando o select muda
+        
         document.getElementById('status').addEventListener('change', function() {
             const badge = document.querySelector('.status-badge');
-            // Remove todas as classes de status
+          
             badge.classList.remove('vendido', 'consignado', 'disponivel', 'reservado');
-            // Adiciona a classe correspondente ao novo status
+          
             badge.classList.add(this.value);
 </script>
 

@@ -1,7 +1,7 @@
 <?php
     require_once('../../conn/conn.php');
 
-    $sql = "SELECT * FROM veiculos WHERE status = 'disponivel'";
+    $sql = "SELECT * FROM veiculos WHERE status = 'disponivel'"; 
     $veiculos = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM clientes";
@@ -154,7 +154,7 @@
                             </div>
                             <div class="modal-body p-4">
                                 <form action="../insert/vendas.php" method="POST">
-                                    <!-- Seção 1: Participantes da Venda -->
+                                
                                     <div class="mb-4">
                                         <h6 class="section-title mb-3">
                                             <i class="fas fa-users me-2"></i>Participantes
@@ -196,7 +196,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Seção 2: Detalhes da Venda -->
+                                  
                                     <div class="mb-4">
                                         <h6 class="section-title mb-3">
                                             <i class="fas fa-file-invoice-dollar me-2"></i>Detalhes da Venda
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Seção 3: Observações (opcional) -->
+                            
                                     <div class="mb-4">
                                         <h6 class="section-title mb-3">
                                             <i class="fas fa-comment me-2"></i>Observações

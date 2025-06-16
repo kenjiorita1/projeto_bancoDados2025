@@ -20,4 +20,6 @@
 
         header('Location: ../view/forma_pagamento.php');
     }
+
+    mysqli_close($conn);
 ?>

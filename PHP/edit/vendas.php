@@ -41,16 +41,6 @@ $formas_pagamento = mysqli_query($conn, $sql);
 </head>
 
 <body>
-    <!-- <header class="header">
-        <div class="header-container">
-            <div class="logo">AutoVendas</div>
-            <div class="user-info">
-                <span>Olá, Administrador</span>
-                <img src="https://via.placeholder.com/40" alt="Usuário">
-            </div>
-        </div>
-    </header> -->
-
     <main class="main-container">
         <div class="card">
             <h1 class="page-title">Editar Venda</h1>
@@ -141,18 +131,13 @@ $formas_pagamento = mysqli_query($conn, $sql);
     </main>
 
     <script>
-        // Adiciona máscara para o campo de valor
+       
         document.getElementById('valor_venda').addEventListener('input', function(e) {
-            // Remove tudo que não é dígito ou ponto decimal
             let value = this.value.replace(/[^\d.]/g, '');
-            
-            // Garante que há no máximo um ponto decimal
             let decimalSplit = value.split('.');
             if (decimalSplit.length > 2) {
                 value = decimalSplit[0] + '.' + decimalSplit.slice(1).join('');
             }
-            
-            // Limita a 2 casas decimais
             if (decimalSplit.length > 1) {
                 value = decimalSplit[0] + '.' + decimalSplit[1].slice(0, 2);
             }

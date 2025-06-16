@@ -33,4 +33,5 @@
 
         header('Location: ../view/funcionario.php');
     }
+    mysqli_close($conn);
 ?>

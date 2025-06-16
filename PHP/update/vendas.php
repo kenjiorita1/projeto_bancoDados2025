@@ -1,8 +1,7 @@
 <?php
 include_once('../../conn/conn.php');
 
-// Recebendo os dados do formulário
-$id = $_POST['id']; // ID da venda que será atualizada
+$id = $_POST['id']; 
 $cliente = $_POST['cliente'];
 $funcionario = $_POST['funcionario'];
 $veiculo = $_POST['veiculo'];

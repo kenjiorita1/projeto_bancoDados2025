@@ -39,7 +39,6 @@
             cargo = '$cargo'
         WHERE id = '$id'";
 
-    // echo $sql;
     $result = mysqli_query($conn, $sql);
 
 

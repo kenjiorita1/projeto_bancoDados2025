@@ -20,4 +20,5 @@
 
         header('Location: ../../view/exame.php');
     }
+    mysqli_close($conn);
 ?>

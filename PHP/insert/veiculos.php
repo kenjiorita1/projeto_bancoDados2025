@@ -1,8 +1,6 @@
 <?php
     include_once('../../conn/conn.php');
   
-
-    // $id  = $_POST['id'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];   
     $ano_fabricacao = $_POST['ano_fabricacao'];
@@ -30,4 +28,5 @@
 
         header('Location: ../view/veiculos.php');
     }
+    mysqli_close($conn);
 ?>

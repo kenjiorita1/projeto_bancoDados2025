@@ -18,6 +18,5 @@ if (isset($_GET['veiculo'])) {
     echo json_encode(["erro" => "Parâmetro 'veiculo' não informado"]);
 }
 
-// Fecha conexão
 mysqli_close($conn);
 ?>
