@@ -4,7 +4,7 @@
     $password = "";
     $dbname = "concessionaria";
 
-    $conn = mysqli_connect($localhost, $username, $password, $dbname);
+    $conn = mysqli_connect($localhost, $username, $password, $dbname,3307);
     
     if ($conn) {
         // echo "Conectado com sucesso !";

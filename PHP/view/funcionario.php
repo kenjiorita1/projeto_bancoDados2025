@@ -63,6 +63,46 @@
 
 
     <div class="container">
+
+    <div class="modal fade" id="modalFiltro" tabindex="-1" aria-labelledby="modalFiltroLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content border-0 shadow-lg">
+                    <div class="modal-header modal-header-custom  text-white">
+                        <h5 class="modal-title" id="modalFiltroLabel">
+                            <i class="fas fa-filter me-2"></i>Filtrar Relatório
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="filtro-data1" name="filtro-data1" require>
+                                    <label for="filtro-data1">Data Inicio</label>
+                                </div>
+                            </div>
+                             <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="date" class="form-control" id="filtro-data2" name="filtro-data2" require>
+                                    <label for="filtro-data">Data Fim</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <i class="fas fa-times me-2"></i>Fechar
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="imprimirRelatorio('pdf')">
+                            <i class="fas fa-file-pdf me-2"></i>Gerar PDF
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="imprimirRelatorio('csv')">
+                            <i class="fas fa-file-excel me-2"></i>Exportar CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
        
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
@@ -249,6 +289,10 @@
                     data-bs-target="#staticBackdrop">
                     Cadastrar funcionario
                 </button>
+                 <button type="button" class="btn btn-primary btn-cadastro" data-bs-toggle="modal"
+                    data-bs-target="#modalFiltro">
+                    Imprimir Relatório filtrado
+                </button>
             </div>
             <h2 class="titulo-tabela">Listagem de Funcionarios</h2>
             <table>
@@ -302,10 +346,32 @@ function editar(id) {
 function excluir(id) {
     window.location.href = `../delete/funcionario.php?id=${id}`;
 }
+
+        function imprimirRelatorio(tipo) {
+            var data1 = $('#filtro-data1').val();
+            var data2 = $('#filtro-data2').val();
+
+            if(tipo === "pdf"){
+                var url = "../utils/PDF/gerarRelatorioFuncionario.php?data1=" + data1 + 
+                        "&data2=" + data2
+                        $('#modalFiltro').modal('hide');
+            }
+            if(tipo === "csv"){
+                var url = "../utils/CSV/imprimir_relatorio_venda.php?funcionario=" + funcionario +
+                        "&data1=" + data1 + 
+                        "&data2=" + data2
+                        $('#modalFiltro').modal('hide');
+            }
+
+            window.open(url, '_blank');
+        }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
-</script>
+</script> -->
 
 </html>

@@ -11,6 +11,7 @@ if (!$conn) {
 $sql = "DELETE FROM vendas WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
 
+
 if ($result) {
     echo "Venda deletada com sucesso!";
     header('Location: ../view/vendas.php');
