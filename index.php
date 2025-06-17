@@ -1,6 +1,6 @@
 <?php
     require_once ('./conn/conn.php');
-
+    
     $sql = "SELECT COUNT(*) AS TOTAL FROM veiculos where status = 'disponivel'";
     $resultVeiculos = mysqli_query($conn, $sql);
     $linha = mysqli_fetch_assoc($resultVeiculos); 
